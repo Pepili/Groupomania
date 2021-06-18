@@ -1,0 +1,13 @@
+.registerTitle {
+  width: 60%;
+  margin: auto;
+  font-size: 26px;
+  color: $color-primary;
+  &::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 6px;
+    border-bottom: 2px solid $color-primary;
+  }
+}

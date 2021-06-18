@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Groupomania social est une application web 
+      qui permet à ses salariés de communiquer et de partager entre eux."
+    />
+    <link rel="stylesheet" href="/frontEnd/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/frontEnd/assets/css/fontawesome/css/all.min.css"
+    />
+    <title>Groupomania social</title>
+  </head>
+  <body>
+    <header class="headerActu">
+      <img
+        src="/frontEnd/assets/images/logos/icon.svg"
+        alt="icone groupomania"
+      />
+      <nav class="linkProfil">
+        <a href="/frontEnd/assets/html/news.html" title="Actualités"
+          >Actualités</a
+        >
+        <a href="/frontEnd/assets/html/setting.html" title="paramètres"
+          ><i class="fas fa-cog"></i
+        ></a>
+      </nav>
+    </header>
+    <div class="profilInformation">
+      <img src="../images/profilDefault.jpg" alt="Photo de profil" />
+      <div class="profilPresentation">
+        <h2>Nom d'utilisateur</h2>
+        <p>Presentation</p>
+      </div>
+    </div>
+    <div class="myPosts">
+      <nav class="onglets">
+        <a href="posts" id="linkPost">Mes posts</a>
+        <a href="likePost" id="linkLike">Mes likes</a>
+      </nav>
+      <div class="posts">
+        <div class="publication">
+          <h2>Nom d'utilisateur</h2>
+          <div class="files">
+            <img src="../images/280px-A_small_cup_of_coffee.jpg" />
+          </div>
+          <p>texte</p>
+          <div class="likeDislike">
+            <div class="likes">
+              <i class="fas fa-thumbs-up"></i>
+              <span>0</span>
+            </div>
+            <div class="dislikes">
+              <i class="fas fa-thumbs-down"></i>
+              <span>0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="likePost">
+        <div class="likePublication"></div>
+      </div>
+    </div>
+  </body>
+</html>

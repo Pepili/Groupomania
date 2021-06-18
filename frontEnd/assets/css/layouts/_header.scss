@@ -1,0 +1,23 @@
+@media all and (max-width: 900px) {
+  .headerLogo {
+    width: 100%;
+    .logo {
+      width: 90%;
+      margin: auto;
+      img {
+        max-width: 350px;
+        width: 100%;
+      }
+    }
+  }
+  .headerActu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .linkProfil {
+      a {
+        margin: 0 20px;
+      }
+    }
+  }
+}

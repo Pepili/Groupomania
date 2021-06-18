@@ -1,0 +1,60 @@
+@media all and (max-width: 900px) {
+  .profilInformation {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    margin-top: 40px;
+    img {
+      width: 25%;
+      border-radius: 100%;
+      object-fit: cover;
+    }
+    .profilPresentation {
+      width: 75%;
+      border: 2px solid $color-primary;
+      margin-left: 30px;
+      border-radius: 20px;
+      h2 {
+        margin: 0;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-bottom: 2px solid $color-primary;
+      }
+      p {
+        font-size: 16px;
+        margin: 0;
+        padding: 20px 20px;
+      }
+    }
+  }
+
+  .myPosts {
+    border: 2px solid $color-primary;
+    width: 92%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    nav {
+      width: 100%;
+      display: flex;
+      border-bottom: 2px solid $color-primary;
+      a {
+        width: 50%;
+        text-align: center;
+        padding: 18px 0;
+        font-size: 22px;
+      }
+      #linkPost {
+        background-color: lighten($color-primary, 40%);
+        border-radius: 20px 0 0 0;
+        color: black;
+        box-shadow: inset -3px -8px 18px -9px rgb(82, 50, 50);
+      }
+      #linkLike {
+        background-color: $color-primary;
+        border-radius: 0 20px 0 0;
+        color: white;
+      }
+    }
+  }
+}

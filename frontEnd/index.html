@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Groupomania social est une application web 
+      qui permet à ses salariés de communiquer et de partager entre eux."
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/fontawesome/css/all.min.css" />
+    <title>Groupomania social</title>
+  </head>
+
+  <body>
+    <header class="headerLogo">
+      <div class="logo">
+        <img
+          src="./assets/images/logos/icon-left-font.svg"
+          alt="logo Groupomania"
+        />
+        <p>Social</p>
+      </div>
+    </header>
+    <form class="loginForm">
+      <label for="userName">Nom d'utilisateur</label>
+      <input
+        type="text"
+        name="userName"
+        id="userName"
+        minlength="3"
+        maxlength="30"
+        required
+      />
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        minlength="8"
+        maxlength="30"
+        required
+      />
+      <input type="submit" value="Connexion" id="connexion" />
+    </form>
+    <nav class="inscription">
+      <a href="./assets/html/register.html" title="inscription">S'inscrire</a>
+    </nav>
+  </body>
+</html>

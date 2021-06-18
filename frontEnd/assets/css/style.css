@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "roboto";
+  src: url("/frontEnd/assets/css/fonts/Roboto-Regular.ttf") format("truetype");
+}
+body {
+  width: 100%;
+  margin: 0;
+  font-family: "roboto";
+}
+
+* {
+  box-sizing: border-box;
+}
+* a {
+  text-decoration: none;
+}
+* li {
+  list-style: none;
+}
+* ul,
+* ol {
+  padding: 0;
+}
+
+@media all and (max-width: 900px) {
+  .headerLogo {
+    width: 100%;
+  }
+  .headerLogo .logo {
+    width: 90%;
+    margin: auto;
+  }
+  .headerLogo .logo img {
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .headerActu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .headerActu .linkProfil a {
+    margin: 0 20px;
+  }
+}
+@media all and (max-width: 900px) {
+  .loginForm {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .loginForm label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  .loginForm input {
+    height: 45px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: #fff8f7;
+    font-size: 18px;
+  }
+  .loginForm #connexion {
+    margin-top: 50px;
+    font-size: 24px;
+    height: 50px;
+    color: white;
+    background-color: #f5280c;
+    border: none;
+    z-index: 1;
+    border-radius: 15px;
+    transform: scale(1);
+    position: relative;
+    transition: transform 500ms ease-in-out;
+    box-shadow: 0px 5px 18px 2px #bdbdbd;
+  }
+  .loginForm #connexion:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 15px;
+    transition: opacity 500ms ease-in-out;
+    box-shadow: 0px 10px 18px 10px #bdbdbd;
+  }
+  .loginForm #connexion:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+  }
+  .loginForm #connexion:hover:after {
+    opacity: 1;
+  }
+}
+@media all and (max-width: 900px) {
+  .inscription {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .inscription a {
+    font-size: 20px;
+    color: #f5280c;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+  }
+  .inscription a:before, .inscription a:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    width: 0px;
+    height: 3px;
+    margin: 5px 0 0;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: #f5280c;
+  }
+  .inscription a:before {
+    left: 50%;
+  }
+  .inscription a:hover:before, .inscription a:hover:after {
+    width: 50%;
+    opacity: 1;
+  }
+  .inscription a:after {
+    right: 50%;
+  }
+  .inscription a:hover {
+    cursor: pointer;
+  }
+}
+.registerTitle {
+  width: 60%;
+  margin: auto;
+  font-size: 26px;
+  color: #f5280c;
+}
+.registerTitle::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 6px;
+  border-bottom: 2px solid #f5280c;
+}
+
+@media all and (max-width: 900px) {
+  .profilInformation {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    margin-top: 40px;
+  }
+  .profilInformation img {
+    width: 25%;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+  .profilInformation .profilPresentation {
+    width: 75%;
+    border: 2px solid #f5280c;
+    margin-left: 30px;
+    border-radius: 20px;
+  }
+  .profilInformation .profilPresentation h2 {
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-bottom: 2px solid #f5280c;
+  }
+  .profilInformation .profilPresentation p {
+    font-size: 16px;
+    margin: 0;
+    padding: 20px 20px;
+  }
+
+  .myPosts {
+    border: 2px solid #f5280c;
+    width: 92%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+  }
+  .myPosts nav {
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid #f5280c;
+  }
+  .myPosts nav a {
+    width: 50%;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 22px;
+  }
+  .myPosts nav #linkPost {
+    background-color: #fdd5d0;
+    border-radius: 20px 0 0 0;
+    color: black;
+    box-shadow: inset -3px -8px 18px -9px #523232;
+  }
+  .myPosts nav #linkLike {
+    background-color: #f5280c;
+    border-radius: 0 20px 0 0;
+    color: white;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
