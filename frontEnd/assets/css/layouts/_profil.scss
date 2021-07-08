@@ -1,60 +1,65 @@
-@media all and (max-width: 900px) {
-  .profilInformation {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    margin-top: 40px;
-    img {
-      width: 25%;
-      border-radius: 100%;
-      object-fit: cover;
+.profilInformation {
+  width: 90%;
+  margin: auto;
+  max-width: 1000px;
+  display: flex;
+  margin-top: 40px;
+  img {
+    width: 25%;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+  .profilPresentation {
+    width: 75%;
+    border: 2px solid $color-primary;
+    margin-left: 30px;
+    border-radius: 20px;
+    h2 {
+      margin: 0;
+      padding: 10px 20px;
+      font-size: 20px;
+      border-bottom: 2px solid $color-primary;
     }
-    .profilPresentation {
-      width: 75%;
-      border: 2px solid $color-primary;
-      margin-left: 30px;
-      border-radius: 20px;
-      h2 {
-        margin: 0;
-        padding: 10px 20px;
-        font-size: 20px;
-        border-bottom: 2px solid $color-primary;
-      }
-      p {
-        font-size: 16px;
-        margin: 0;
-        padding: 20px 20px;
-      }
+    p {
+      font-size: 16px;
+      margin: 0;
+      padding: 20px 20px;
     }
   }
-
-  .myPosts {
-    border: 2px solid $color-primary;
-    width: 92%;
-    margin: auto;
-    margin-top: 20px;
-    border-radius: 20px;
-    nav {
+}
+.notPost {
+  font-size: 20px;
+  text-align: center;
+}
+.myPosts {
+  border: 2px solid $color-primary;
+  width: 92%;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  border-radius: 20px;
+  .onglets {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    text-align: center;
+    border-bottom: 2px solid $color-primary;
+    #linkPost {
+      background-color: $color-primary;
+      border-radius: 18px 18px 0 0;
+      color: white;
       width: 100%;
-      display: flex;
-      border-bottom: 2px solid $color-primary;
-      a {
-        width: 50%;
-        text-align: center;
-        padding: 18px 0;
-        font-size: 22px;
-      }
-      #linkPost {
-        background-color: lighten($color-primary, 40%);
-        border-radius: 20px 0 0 0;
-        color: black;
-        box-shadow: inset -3px -8px 18px -9px rgb(82, 50, 50);
-      }
-      #linkLike {
-        background-color: $color-primary;
-        border-radius: 0 20px 0 0;
-        color: white;
-      }
+      margin: 0;
+      padding: 18px 0;
+    }
+    #createPublication {
+      background-color: lighten($color-primary, 40%);
+      color: black;
+      height: 45px;
+      line-height: 45px;
+      box-shadow: 0 4px 28px -5px rgba(63, 62, 62, 0.75);
     }
   }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Groupomania social est une application web 
+    qui permet à ses salariés de communiquer et de partager entre eux."
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/fontawesome/css/all.min.css" />
+    <title>Groupomania social</title>
+  </head>
+  <body>
+    <header class="headerLogo headerSetting">
+      <a href="profil.html?id=" class="arrow" id="arrow">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <div class="logo">
+        <img src="../images/logos/icon-left-font.png" alt="logo Groupomania" />
+        <p>Social</p>
+      </div>
+    </header>
+    <h1 class="params">Paramètres</h1>
+    <form class="formSettings" id="formSettings">
+      <input
+        class="imageUrl"
+        id="imageUrl"
+        name="linkImage"
+        type="file"
+        accept="image/png, image/jpeg, image/jpg, image/gif"
+      />
+      <label for="userName">Changer nom d'utilisateur</label>
+      <input
+        type="text"
+        name="userName"
+        id="userName"
+        minlength="3"
+        maxlength="30"
+      />
+      <label for="text">Présentation</label>
+      <textarea
+        class="presentationModify"
+        name="text"
+        id="presentationModify"
+        minlength="5"
+        maxlength="250"
+        rows="5"
+        cols="33"
+        wrap="hard"
+        placeholder="Taper votre présentation ici!"
+      ></textarea>
+      <label for="email">Changer d'adresse email</label>
+      <input type="email" name="email" id="email" />
+      <input type="submit" value="Sauvegarder" id="save" class="save" />
+    </form>
+    <div class="linkSetting">
+      <ul>
+        <li><a href="#" id="logOut">Se déconnecter</a></li>
+        <li><a href="#" class="delete" id="delete">Supprimer son compte</a></li>
+      </ul>
+    </div>
+    <script src="/js/setting.js"></script>
+  </body>
+</html>

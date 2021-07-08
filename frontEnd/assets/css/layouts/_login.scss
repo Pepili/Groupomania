@@ -1,41 +1,48 @@
-@media all and (max-width: 900px) {
-  .inscription {
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
-    a {
-      font-size: 20px;
-      color: $color-primary;
-      font-weight: bold;
+.inscription {
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  a {
+    font-size: 20px;
+    color: $color-primary;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      width: 0px;
+      height: 3px;
+      margin: 5px 0 0;
       transition: all 0.2s ease-in-out;
-      position: relative;
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        bottom: -8px;
-        width: 0px;
-        height: 3px;
-        margin: 5px 0 0;
-        transition: all 0.2s ease-in-out;
-        transition-duration: 0.5s;
-        opacity: 0;
-        background-color: $color-primary;
-      }
-      &:before {
-        left: 50%;
-      }
-      &:hover:before,
-      &:hover:after {
-        width: 50%;
-        opacity: 1;
-      }
-      &:after {
-        right: 50%;
-      }
-      &:hover {
-        cursor: pointer;
-      }
+      transition-duration: 0.5s;
+      opacity: 0;
+      background-color: $color-primary;
     }
+    &:before {
+      left: 50%;
+    }
+    &:hover:before,
+    &:hover:after {
+      width: 50%;
+      opacity: 1;
+    }
+    &:after {
+      right: 50%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .forget {
+    font-size: 16px;
+    color: lighten(black, 50%);
+    text-decoration: underline;
+    font-weight: 0;
   }
 }

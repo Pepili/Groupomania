@@ -17,18 +17,18 @@
     <header class="headerLogo">
       <div class="logo">
         <img
-          src="./assets/images/logos/icon-left-font.svg"
+          src="../assets/images/logos/icon-left-font.png"
           alt="logo Groupomania"
         />
         <p>Social</p>
       </div>
     </header>
-    <form class="loginForm">
-      <label for="userName">Nom d'utilisateur</label>
+    <form class="loginForm" id="loginForm">
+      <label for="email">Email</label>
       <input
         type="text"
-        name="userName"
-        id="userName"
+        name="email"
+        id="email"
         minlength="3"
         maxlength="30"
         required
@@ -46,6 +46,14 @@
     </form>
     <nav class="inscription">
       <a href="./assets/html/register.html" title="inscription">S'inscrire</a>
+      <a
+        href="./assets/html/answerPassword.html"
+        title="Password oublié"
+        class="forget"
+        >mot de passe oublié</a
+      >
     </nav>
+
+    <script src="./js/index.js"></script>
   </body>
 </html>

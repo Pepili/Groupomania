@@ -3,6 +3,7 @@
   margin: auto;
   font-size: 26px;
   color: $color-primary;
+  max-width: 500px;
   &::after {
     content: "";
     display: block;

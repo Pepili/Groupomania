@@ -8,27 +8,21 @@
       content="Groupomania social est une application web 
       qui permet à ses salariés de communiquer et de partager entre eux."
     />
-    <link rel="stylesheet" href="/frontEnd/assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="/frontEnd/assets/css/fontawesome/css/all.min.css"
-    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/fontawesome/css/all.min.css" />
     <title>Groupomania social</title>
   </head>
 
   <body>
     <header class="headerLogo">
       <div class="logo">
-        <img
-          src="./assets/images/logos/icon-left-font.svg"
-          alt="logo Groupomania"
-        />
+        <img src="../images/logos/icon-left-font.png" alt="logo Groupomania" />
         <p>Social</p>
       </div>
     </header>
 
     <h1 class="registerTitle">S'inscrire</h1>
-    <form class="loginForm">
+    <form class="loginForm" id="loginForm">
       <label for="userName">Nom d'utilisateur</label>
       <input
         type="text"
@@ -47,18 +41,35 @@
         maxlength="30"
         required
       />
-      <label for="password">Valider le Mot de passe</label>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required />
+      <label for="answer"
+        >Question secrète (en cas d'oubli de mot de passe)</label
+      >
+      <select name="answer" id="answer_select">
+        <option value="">Choisissez une question:</option>
+        <option value="animaux">
+          Quel est le nom de votre premier animal de compagnie?
+        </option>
+        <option value="prénom">
+          Quel est le prénom de votre cousin/cousine ?
+        </option>
+        <option value="plat">Quel est votre plat préféré?</option>
+        <option value="film">Quel est votre film préféré ?</option>
+        <option value="star">Quel est votre star préférée?</option>
+      </select>
+      <label for="response">Réponse</label>
       <input
-        type="password"
-        name="password"
-        id="password"
-        minlength="8"
+        type="text"
+        name="response"
+        id="response"
+        minlength="3"
         maxlength="30"
         required
       />
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" required />
       <input type="submit" value="S'inscrire" id="connexion" />
     </form>
+
+    <script src="/js/register.js"></script>
   </body>
 </html>

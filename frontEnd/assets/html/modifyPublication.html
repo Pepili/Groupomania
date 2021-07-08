@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Groupomania social est une application web 
+      qui permet à ses salariés de communiquer et de partager entre eux."
+    />
+    <link rel="stylesheet" href="/frontEnd/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/frontEnd/assets/css/fontawesome/css/all.min.css"
+    />
+    <title>Groupomania social</title>
+  </head>
+  <body>
+    <header class="headerLogo headerSetting">
+      <a href="profil.html" class="arrow">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <div class="logo">
+        <img src="../images/logos/icon-left-font.png" alt="logo Groupomania" />
+        <p>Social</p>
+      </div>
+    </header>
+    <h1 class="createPublication">Modifier la Publication</h1>
+    <div class="newPublication">
+      <div class="createImage">
+        <a class="linkImage" href="#">Ajouter une image</a>
+      </div>
+      <form class="formPublication">
+        <textarea
+          class="textPublication"
+          minlength="5"
+          maxlength="250"
+          rows="5"
+          cols="33"
+          wrap="hard"
+          placeholder="Taper votre message ici!"
+        ></textarea>
+        <input class="submitPublication" type="submit" value="Créer" />
+      </form>
+    </div>
+  </body>
+</html>

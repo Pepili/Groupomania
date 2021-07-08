@@ -9,5 +9,8 @@
     "prefix": "postcss ./style.css --use autoprefixer -d ./prefixed/"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vue-svg-loader": "^0.16.0"
+  }
 }
