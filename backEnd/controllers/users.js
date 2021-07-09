@@ -154,7 +154,7 @@ exports.updateProfile = async (req, res) => {
   // ----------------------------------------------------------------------------------
   // Si il y a l'ajout d'une image, on supprime l'ancienne sauf si c'est par défaut
   if (req.file) {
-    const profile = await models.User.findOne({ id: req.params.id });
+    const profile = await models.User.findOne({ where: { id: req.params.id } });
     if (profile.imageUrl !== "../images/profilDefault.jpg") {
       const filename = profile.imageUrl.split("/images/")[1];
       const fsError = await fs.promises.unlink(`images/${filename}`);
