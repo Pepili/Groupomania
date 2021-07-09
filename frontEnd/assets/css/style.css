@@ -396,15 +396,37 @@ body {
 .headerActu .photo {
   display: flex;
   justify-content: flex-end;
-  margin: 0 !important;
-  height: 70px;
+  margin: 33px 40px 0 0 !important;
   align-items: flex-end;
+  color: black;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+  position: relative;
 }
-.headerActu .photo img {
-  width: 50px;
-  border-radius: 100%;
-  height: 50px;
-  margin-right: 20px;
+.headerActu .photo:before, .headerActu .photo:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  width: 0px;
+  height: 2px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.5s;
+  opacity: 0;
+  background-color: #f5280c;
+}
+.headerActu .photo:before {
+  left: 50%;
+}
+.headerActu .photo:hover:before, .headerActu .photo:hover:after {
+  width: 50%;
+  opacity: 1;
+}
+.headerActu .photo:after {
+  right: 50%;
+}
+.headerActu .photo:hover {
+  cursor: pointer;
 }
 
 h3 {

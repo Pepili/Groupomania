@@ -11,6 +11,7 @@ const regexUser =
 const regexDescription =
   /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ' -?.]{2,250}$/;
 
+// création de compte
 exports.signup = (req, res) => {
   // si les champs sont vides, on engendre une erreur
   if (
@@ -36,7 +37,7 @@ exports.signup = (req, res) => {
       error:
         "Your password must contain at least 8 characters, one lower case, one upper case, one number and one special character",
     });
-    // On crypte et on hash le mot de passe, la question et la réponse
+    // On crypte et on hash le mot de passe et la response
   } else {
     const hash = bcrypt.hashSync(req.body.password, 10);
     const hashRes = bcrypt.hashSync(req.body.response, 10);
@@ -63,6 +64,7 @@ exports.signup = (req, res) => {
   }
 };
 
+// Connexion
 exports.login = (req, res) => {
   // Si les champs email ou password sont vide, on engendre une erreur
   if (req.body.email == null || req.body.password == null) {
@@ -78,6 +80,7 @@ exports.login = (req, res) => {
       if (!user) {
         return res.status(401).json({ error: "User not found..." });
       }
+      // on compare le mdp form et le mdp présent dans la db
       bcrypt
         .compare(req.body.password, user.password)
         .then((valid) => {
@@ -103,6 +106,7 @@ exports.login = (req, res) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
+// On récupère les infos de l'user
 exports.profile = (req, res) => {
   // On récupère les infos de l'user demandé
   models.User.findOne({
@@ -120,6 +124,8 @@ exports.profile = (req, res) => {
       });
     });
 };
+
+// On modifie son compte
 exports.updateProfile = async (req, res) => {
   // si une image est ajouté, on la traite
   var userProfile = {};
@@ -133,7 +139,6 @@ exports.updateProfile = async (req, res) => {
   } else {
     userProfile = { ...req.body };
   }
-
   // ----------------------------------------------------------------------------------
   //Si la value email, username ou presentation ne respecte pas le regexp, elle n'est pas valide
   if (
@@ -147,7 +152,7 @@ exports.updateProfile = async (req, res) => {
       .json({ error: "Please fill in the form fields correctly'" });
   }
   // ----------------------------------------------------------------------------------
-  // Si il y a l'ajout d'une image, on supprime l'ancienne
+  // Si il y a l'ajout d'une image, on supprime l'ancienne sauf si c'est par défaut
   if (req.file) {
     const profile = await models.User.findOne({ id: req.params.id });
     if (profile.imageUrl !== "../images/profilDefault.jpg") {
@@ -166,10 +171,12 @@ exports.updateProfile = async (req, res) => {
     .catch((error) => res.status(403).json({ error }));
 };
 
+// On traite la reponse lors du changement de mot de passe
 exports.response = (req, res) => {
   if (req.body.response == null || req.body.username == null) {
     return res.status(400).json({ error: "Please fill in all fields!" });
   }
+  // On cherche l'utilisateur grâce à l'username
   models.User.findOne({
     where: {
       username: req.body.username,
@@ -181,6 +188,7 @@ exports.response = (req, res) => {
           .status(401)
           .json({ error: "le nom d'utilisateur n'existe pas" });
       }
+      // On compare la response form avec la response db
       bcrypt
         .compare(req.body.response, user.response)
         .then((valid) => {
@@ -197,11 +205,15 @@ exports.response = (req, res) => {
     })
     .catch((error) => res.status(500).json({ error }));
 };
+
+// on modifie le mot de passe
 exports.updatePassword = async (req, res) => {
+  // On récupère le password écrit dans le form
   const userPassword = req.body.password;
   if (userPassword == null || !regexPassword.test(userPassword.trim())) {
     return res.status(400).json({ error: "Please fill in all fields!" });
   }
+  // On modifie l'ancien password avec le nouveau
   const userPasswordHashed = await bcrypt.hash(userPassword, 10);
   await models.User.update(
     { password: userPasswordHashed },
@@ -211,7 +223,9 @@ exports.updatePassword = async (req, res) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
+// On supprime l'utilisateur
 exports.deleteUser = async (req, res) => {
+  // On cherche toute les publications créées par l'user
   const publications = await models.Publication.findAll({
     where: { UserId: req.params.id },
   });
@@ -220,21 +234,25 @@ exports.deleteUser = async (req, res) => {
       const publicationFilename = publication.file.split("/images/")[1];
       await fs.promises.unlink(`images/${publicationFilename}`);
     }
+    // On supprime les Opinions des publications de l'user
     await models.Opinion.destroy({ where: { PublicationId: publication.id } });
   }
+  // On supprime les publications
   await models.Publication.destroy({ where: { UserId: req.params.id } });
+  // On supprime les opinions de l'user
   await models.Opinion.destroy({ where: { UserId: req.params.id } });
   const user = await models.User.findOne({ where: { id: req.params.id } });
   const filename = user.imageUrl.split("/images/")[1];
   if (filename !== "profilDefault.jpg") {
     await fs.promises.unlink(`images/${filename}`);
   }
+  // On supprime l'user
   await user.destroy({ where: { id: req.params.id } });
   res.status(200).json({ message: "Compte supprimé" });
 };
 
+// On récupère toute les publications de l'utilisateur indiqué
 exports.getAllPublicationsUser = (req, res) => {
-  // On récupère toute les publications de l'utilisateur indiqué
   models.Publication.findAll({
     order: [["updatedAt", "DESC"]],
     include: [models.User, models.Opinion],

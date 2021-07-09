@@ -1,5 +1,4 @@
 // Récupération des informations de l'utilisateur
-
 async function getUserPost(id) {
   response = await fetch(`http://localhost:3000/api/user/${id}/publications`, {
     method: "GET",
@@ -211,7 +210,7 @@ async function postProfil() {
     });
   } catch (error) {
     console.log("desole, pas d'accés");
-    /* window.location = "/index.html"; */
+    window.location = "/index.html";
   }
 }
 postProfil();

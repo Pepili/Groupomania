@@ -1,5 +1,5 @@
 // Se connecter
-// On créer un listener sur le bouton submit
+
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -17,7 +17,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     body: data,
   });
   let apiData = await response.json();
-  // On enregistre les données de la response dans le localStorage
+  // On enregistre les données de la response dans la sessionStorage
   if (response.status == 200) {
     sessionStorage.setItem("token", apiData.token);
     sessionStorage.setItem("id", apiData.UserId);

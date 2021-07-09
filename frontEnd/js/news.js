@@ -1,3 +1,6 @@
+// récupération des publications et affichage
+const createPublication = document.getElementById("createPublication");
+createPublication.href += sessionStorage.getItem("id");
 const photo = document.getElementById("photo");
 photo.href += sessionStorage.getItem("id");
 const url = "http://localhost:3000/api/publication/";
@@ -19,12 +22,14 @@ function request(url, callback) {
 async function response(posts) {
   const divPosts = document.getElementById("posts");
   const notPostDiv = document.getElementById("notPostDiv");
+  // Si il n'y a pas de publication, on affiche le message suivant
   if (posts.length == 0) {
     const messageNotPost = document.createElement("p");
     messageNotPost.classList.add("messageNotPost");
     messageNotPost.innerText = "Il n'y a pas encore de publication!";
     notPostDiv.appendChild(messageNotPost);
   }
+  // Sinon on affiche les publications
   posts.forEach((post) => {
     const postElement = document.createElement("div");
     postElement.classList.add("publication");
@@ -32,6 +37,7 @@ async function response(posts) {
     <div class="headerPost">
       <h2>${post.User.username}</h2>
       ${
+        // on vérifie l'id de l'user et on affiche ou non la croix
         sessionStorage.getItem("isAdmin") === "true" ||
         post.UserId == sessionStorage.getItem("id")
           ? '<i class="fas fa-times" id="deletePublication' + post.id + '"></i>'
@@ -39,6 +45,7 @@ async function response(posts) {
       }
     </div>
     ${
+      // Si il y a une image, on l'affiche
       post.file
         ? '<div class="files" id="files"><img src="' +
           post.file +
@@ -53,6 +60,7 @@ async function response(posts) {
       <div class="likeDislike">
         <div id="addLike${post.id}" class="likes ${
       post.Opinions.find(
+        // Si like existe, on ajoute liked dans la class
         (opinion) =>
           opinion.UserId == sessionStorage.getItem("id") &&
           opinion.types === "like"
@@ -61,12 +69,14 @@ async function response(posts) {
         : ""
     }">
           <i class="fas fa-thumbs-up"></i>
+          <!-- On implémente la quantité de like en number -->
           <span>${
             post.Opinions.filter((opinion) => opinion.types === "like").length
           }</span>
         </div>
         <div id="addDislike${post.id}" class="dislikes ${
       post.Opinions.find(
+        // Si dislike existe, on ajoute disliked dans la class
         (opinion) =>
           opinion.UserId == sessionStorage.getItem("id") &&
           opinion.types === "dislike"
@@ -75,6 +85,7 @@ async function response(posts) {
         : ""
     }" >
           <i class="fas fa-thumbs-down"></i>
+          <!-- On implémente la quantité de dislike en number -->
           <span>${
             post.Opinions.filter((opinion) => opinion.types === "dislike")
               .length
@@ -87,6 +98,7 @@ async function response(posts) {
     divPosts.appendChild(postElement);
     const dislikeBtn = document.getElementById("addDislike" + post.id);
     const likeBtn = document.getElementById("addLike" + post.id);
+    // Si like existe dans la db, on supprime au click
     if (
       post.Opinions.find(
         (opinion) =>
@@ -113,6 +125,7 @@ async function response(posts) {
         }
       });
     } else if (
+      // Si dislike existe dans la db, on le supprime au click
       post.Opinions.find(
         (opinion) =>
           opinion.UserId == sessionStorage.getItem("id") &&
@@ -138,7 +151,7 @@ async function response(posts) {
         }
       });
     } else {
-      // add like
+      // Sinon on ajoute like
       likeBtn.addEventListener("click", async () => {
         const response = await fetch(
           "http://localhost:3000/api/publication/" + post.id + "/opinion",
@@ -158,7 +171,7 @@ async function response(posts) {
           alert("Erreur" + response.status + "Veuillez réessayer");
         }
       });
-      // add dislike
+      // ou dislike
       dislikeBtn.addEventListener("click", async () => {
         const response = await fetch(
           "http://localhost:3000/api/publication/" + post.id + "/opinion",
@@ -179,10 +192,12 @@ async function response(posts) {
         }
       });
     }
+    // Si l'user est le bon ou qu'il a les droits admin
     if (
       sessionStorage.getItem("isAdmin") === "true" ||
       post.UserId == sessionStorage.getItem("id")
     ) {
+      // Il peut supprimer la publication
       document
         .getElementById("deletePublication" + post.id)
         .addEventListener("click", async (e) => {

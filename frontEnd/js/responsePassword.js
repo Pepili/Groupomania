@@ -18,7 +18,7 @@ document
       body: data,
     });
     let apiData = await response.json();
-    // On enregistre les données de la response dans le localStorage
+    // On enregistre les données de la response dans la SessionStorage
     if (response.status == 200) {
       sessionStorage.setItem("id", apiData.UserId);
       const UserId = sessionStorage.getItem("id");

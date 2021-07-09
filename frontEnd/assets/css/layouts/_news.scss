@@ -6,14 +6,38 @@
   .photo {
     display: flex;
     justify-content: flex-end;
-    margin: 0 !important;
-    height: 70px;
+    margin: 33px 40px 0 0 !important;
     align-items: flex-end;
-    img {
-      width: 50px;
-      border-radius: 100%;
-      height: 50px;
-      margin-right: 20px;
+    color: black;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      width: 0px;
+      height: 2px;
+      margin: 5px 0 0;
+      transition: all 0.2s ease-in-out;
+      transition-duration: 0.5s;
+      opacity: 0;
+      background-color: $color-primary;
+    }
+    &:before {
+      left: 50%;
+    }
+    &:hover:before,
+    &:hover:after {
+      width: 50%;
+      opacity: 1;
+    }
+    &:after {
+      right: 50%;
+    }
+    &:hover {
+      cursor: pointer;
     }
   }
 }

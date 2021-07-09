@@ -19,6 +19,7 @@ sequelize
 /* (async () => {
   await sequelize.sync({ force: true });
 })(); */
+
 // On récupère les models et on les stockes dans la base de données de manière auto
 fs.readdirSync(__dirname)
   .filter((file) => {
